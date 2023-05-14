@@ -1,0 +1,154 @@
+@use 'base' as *;
+
+.rating-card {
+  width: rem(326px);
+  max-width: calc(100vw - rem(50px));
+  padding: rem(24px);
+  border-radius: rem(15px);
+  background-color: $dark-blue;
+
+  @include tablet {
+    width: rem(412px);
+    padding: rem(34px);
+  }
+
+  &::before {
+    @extend %rating-circle;
+
+    background: {
+      image: url('../images/icon-star.svg');
+      repeat: no-repeat;
+      position: center;
+      size: rem(13px);
+    }
+    content: '';
+    display: block;
+
+    @include tablet {
+      background-size: rem(17px);
+    }
+  }
+}
+
+.rating-card__heading {
+  color: $white;
+  font-size: clamp(rem(23.8px), 4vw, rem(28px));
+  padding-top: rem(20px);
+
+  @include tablet {
+    padding-top: rem(30px);
+  }
+}
+
+.rating-card__text {
+  color: $light-grey;
+  font-size: clamp(rem(14px), 3vw, rem(15px));
+  padding-top: rem(13px);
+  padding-bottom: rem(30px);
+  line-height: 1.6;
+}
+
+.rating-card fieldset {
+  border-width: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating-card label {
+  @extend %rating-circle;
+
+  color: $light-grey;
+  padding: rem(10px);
+  text-align: center;
+  font-size: clamp(rem(14.5px), 3vw, rem(16px));
+  font-weight: bold;
+  display: grid;
+  place-items: center;
+
+  &:hover {
+    background-color: $light-grey;
+    color: $white;
+    cursor: pointer;
+  }
+}
+
+.rating-card button[type='submit'] {
+  font: {
+    family: inherit;
+    size: clamp(rem(14px), 3vw, rem(15px));
+    weight: bold;
+  }
+  text-transform: uppercase;
+  color: $white;
+  background-color: $orange;
+  border-width: 0;
+  border-radius: rem(20px);
+  padding: rem(18px);
+  letter-spacing: rem(2px);
+  width: 100%;
+  line-height: 0.5;
+  margin-top: rem(23px);
+  margin-bottom: rem(8px);
+
+  &:hover {
+    background-color: $white;
+    color: $orange;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+  }
+}
+
+input[type='radio'] {
+  appearance: none;
+  position: absolute;
+
+  &:checked + label {
+    background-color: $orange;
+    color: $white;
+    outline: none;
+  }
+
+  &:focus + label {
+    outline: rem(1px) solid $white;
+  }
+}
+
+.attribution {
+  font-size: rem(11px);
+  text-align: center;
+  color: $white;
+  padding: rem(20px);
+
+  & a {
+    color: $medium-grey;
+
+    &:hover {
+      color: $orange;
+    }
+  }
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.you-selected-rating {
+  color: $orange;
+  background-color: lighten($dark-blue, 3%);
+  padding: rem(7px) rem(20px);
+  margin-top: rem(20px);
+  border-radius: rem(20px);
+  font-size: clamp(rem(14px), 3vw, rem(15px));
+  display: inline-block;
+}
+
+.remove-before {
+  &::before {
+    content: none;
+  }
+}
+
+.img--thankyou {
+  width: rem(162px);
+  height: rem(108px);
+}
